@@ -43,7 +43,7 @@ public class CozinhaController {
 		Cozinha cozinha = cozinhaRepository.buscar(id);
 		//return ResponseEntity.status(HttpStatus.OK).body(cozinha);//com corpo
 		//return ResponseEntity.status(HttpStatus.OK).build();//sem com corpo
-		return ResponseEntity.ok(cozinha);//com corpo shortcut
+		//return ResponseEntity.ok(cozinha);//com corpo shortcut
 		//return ResponseEntity.ok();//sem corpo
 		
 //		HttpHeaders headers = new HttpHeaders();//retorno um local para redirecionamento
@@ -52,5 +52,9 @@ public class CozinhaController {
 //				.status(HttpStatus.FOUND)
 //				.headers(headers)
 //				.build();
+		if (cozinha!=null) {
+			return ResponseEntity.ok(cozinha);
+		}
+		return ResponseEntity.notFound().build();
 	}
 }
